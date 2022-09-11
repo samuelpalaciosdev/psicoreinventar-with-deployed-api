@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
-import { Tbody, Tr, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { useContext, useState } from "react";
+import { Context } from "../store/appContext";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { Tbody, Tr, Td } from "react-super-responsive-table";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Invoice from "./Invoice";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 const TableDataAppointment = ({
   index,
@@ -67,90 +68,92 @@ const TableDataAppointment = ({
   };
 
   return (
-    <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-      <Tr>
-        <Td scope="row" className="td p-2">
-          #{index}
-        </Td>
-        <Td className="td p-2">{dateTime}</Td>
-        <Td className="td p-2">
-          #{pacient_id} {""} {pacient}
-        </Td>
-        <Td className="td p-2">
-          #{doctor_id} {""} {doctor}
-        </Td>
-        <Td className="td p-2">{service}</Td>
-        <Td className="td p-2">
-          {/* modal to open Invoice component */}
-          <div className="invoice-modal">
-            <Button
-              color="light"
-              onClick={() => {
-                toggleInvoice();
-                setAppointmentId(index);
-              }}
-              index={index}
-            >
-              <a className="link-primary">Factura</a>
-            </Button>
-            <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
-              <ModalBody>
-                <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={toggleInvoice}>
-                  Salir
-                </Button>
-              </ModalFooter>
-            </Modal>
-          </div>
+    <LazyLoadComponent>
+      <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+        <Tr>
+          <Td scope="row" className="td p-2">
+            #{index}
+          </Td>
+          <Td className="td p-2">{dateTime}</Td>
+          <Td className="td p-2">
+            #{pacient_id} {""} {pacient}
+          </Td>
+          <Td className="td p-2">
+            #{doctor_id} {""} {doctor}
+          </Td>
+          <Td className="td p-2">{service}</Td>
+          <Td className="td p-2">
+            {/* modal to open Invoice component */}
+            <div className="invoice-modal">
+              <Button
+                color="light"
+                onClick={() => {
+                  toggleInvoice();
+                  setAppointmentId(index);
+                }}
+                index={index}
+              >
+                <a className="link-primary">Factura</a>
+              </Button>
+              <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
+                <ModalBody>
+                  <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="secondary" onClick={toggleInvoice}>
+                    Salir
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            </div>
 
-          {/* {Object.keys(invoice).map((key, i) => {
+            {/* {Object.keys(invoice).map((key, i) => {
             return (
               <p key={i}>
                 {key}: {invoice[key]}
               </p>
             );
           })} */}
-        </Td>
-        <Td className="td p-2">
-          <div className="botones">
-            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
-              <div className="delete-appointment-modal">
-                <Button
-                  color="light"
-                  onClick={() => {
-                    toggle();
-                    setAppointmentId(index);
-                  }}
-                  index={index}
-                >
-                  <i className="fa-solid fa-trash-can"></i>
-                </Button>
-                <Modal centered isOpen={modal} fade={false} toggle={toggle}>
-                  <ModalHeader toggle={toggle}>Cancelar cita</ModalHeader>
-                  <ModalBody>Estas seguro de qué quieres Cancelar la cita?</ModalBody>
-                  <ModalFooter>
-                    <Button
-                      color="danger"
-                      onClick={(e) => {
-                        toggle();
-                        handleDeleteAppoinment(e);
-                      }}
-                    >
-                      Confirmar
-                    </Button>
-                    <Button color="secondary" onClick={toggle}>
-                      Cancelar
-                    </Button>
-                  </ModalFooter>
-                </Modal>
+          </Td>
+          <Td className="td p-2">
+            <div className="botones">
+              <div className="d-flex justify-content-start justify-content-md-center align-items-center">
+                <div className="delete-appointment-modal">
+                  <Button
+                    color="light"
+                    onClick={() => {
+                      toggle();
+                      setAppointmentId(index);
+                    }}
+                    index={index}
+                  >
+                    <i className="fa-solid fa-trash-can"></i>
+                  </Button>
+                  <Modal centered isOpen={modal} fade={false} toggle={toggle}>
+                    <ModalHeader toggle={toggle}>Cancelar cita</ModalHeader>
+                    <ModalBody>Estas seguro de qué quieres Cancelar la cita?</ModalBody>
+                    <ModalFooter>
+                      <Button
+                        color="danger"
+                        onClick={(e) => {
+                          toggle();
+                          handleDeleteAppoinment(e);
+                        }}
+                      >
+                        Confirmar
+                      </Button>
+                      <Button color="secondary" onClick={toggle}>
+                        Cancelar
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
               </div>
             </div>
-          </div>
-        </Td>
-      </Tr>
-    </Tbody>
+          </Td>
+        </Tr>
+      </Tbody>
+    </LazyLoadComponent>
   );
 };
 

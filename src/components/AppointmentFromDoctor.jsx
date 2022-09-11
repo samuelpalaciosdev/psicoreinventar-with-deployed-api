@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 import Services from "./Services";
 import BookingPatientFromDoctor from "./BookingPatientFromDoctor";
 import StepWizard from "react-step-wizard";
@@ -26,14 +27,16 @@ const AppointmentFromDoctor = () => {
 
   return (
     <>
-      <div className="bg-primary">
-        <div className="appointment-container py-4" style={{ minHeight: "505px" }}>
-          <StepWizard>
-            <Services />
-            <BookingPatientFromDoctor />
-          </StepWizard>
+      <LazyLoadComponent>
+        <div className="bg-primary">
+          <div className="appointment-container py-4" style={{ minHeight: "505px" }}>
+            <StepWizard>
+              <Services />
+              <BookingPatientFromDoctor />
+            </StepWizard>
+          </div>
         </div>
-      </div>
+      </LazyLoadComponent>
     </>
   );
 };

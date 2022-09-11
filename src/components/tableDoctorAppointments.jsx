@@ -1,9 +1,10 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
@@ -152,169 +153,171 @@ const TableDoctorAppointments = ({
   };
   return (
     <>
-      <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-        <Tr>
-          <Td scope="row" className="td p-2">
-            #{index}
-          </Td>
-          <Td className="td p-2">{pacient}</Td>
-          <Td className="td p-2">
-            {dateTime} {service}
-          </Td>
-          <Td className="td p-2">
-            <div className="d-flex align-items-center justify-content-between">
-              {status}
-              {/* EDIT APPOINTMENT STATUS MODAL */}
-              <div className="edit-appointment-status-modal">
-                <Button
-                  color="light"
-                  onClick={() => {
-                    toggleEditStatus();
-                    setAppointmentId(index);
-                  }}
-                  index={index}
-                >
-                  <i className="fa-solid fa-pen-to-square"></i>
-                </Button>
-                <Modal centered isOpen={modalEditStatus} fade={false} toggle={toggleEditStatus}>
-                  <ModalHeader toggle={toggleEditStatus}>Editar estado de la cita</ModalHeader>
-                  <ModalBody>
-                    <form
-                      id="form"
-                      onSubmit={(e) => {
-                        handleSubmit(onSubmit)(e);
-                        handleSubmit(handleEditAppointmentStatus)(e);
-                      }}
-                    >
-                      <div className="row">
-                        <div className="col-md-6">
-                          <label htmlFor="status" className="form-label">
-                            Estado de la cita
-                          </label>
-                          <select
-                            name="status"
-                            id="status"
-                            // If error, then add invalid-input class
-                            className={`form-select ${errors.status && "invalid-input"}`}
-                            aria-label="select status option"
-                            {...register("status", {
-                              required: {
-                                value: true,
-                                message: "El campo es requerido",
-                              },
-                            })}
-                            value={appointmentStatus["status"]}
-                            onChange={(e) => {
-                              setAppointmentStatus({
-                                ...appointmentStatus,
-                                status: e.target.value,
-                              });
-                            }}
-                          >
-                            <option value="Pendiente">Pendiente</option>
-                            <option value="Realizada">Realizada</option>
-                          </select>
-                          {errors.status && (
-                            <span className="text-danger">{errors.status?.message}</span>
-                          )}
-                        </div>
-                        <div className="row mt-3">
-                          <div className="col-md-6">
-                            <button type="submit" className="btn btn-primary">
-                              Actualizar estado
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="secondary" onClick={toggleEditStatus}>
-                      Cancelar
-                    </Button>
-                  </ModalFooter>
-                </Modal>
-              </div>
-            </div>
-          </Td>
-          <Td className="td p-2">Realizado hardcoded</Td>
-          <Td className="td p-2">
-            <div className="invoice-modal">
-              <Button
-                color="light"
-                onClick={() => {
-                  toggleInvoice();
-                  setAppointmentId(index);
-                }}
-                index={index}
-              >
-                <a className="link-primary">Factura</a>
-              </Button>
-              <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
-                <ModalBody>
-                  <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="secondary" onClick={toggleInvoice}>
-                    Salir
-                  </Button>
-                </ModalFooter>
-              </Modal>
-            </div>
-          </Td>
-          <Td className="td p-2">
-            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
-              {/* Modal Edit Appointment  */}
-              <div className="edit-appointment-modal">
-                <Link
-                  onClick={() => {
-                    toggleEdit();
-                  }}
-                  to={`/edit/appointment/${index}`}
-                >
-                  <Button color="light">
+      <LazyLoadComponent>
+        <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+          <Tr>
+            <Td scope="row" className="td p-2">
+              #{index}
+            </Td>
+            <Td className="td p-2">{pacient}</Td>
+            <Td className="td p-2">
+              {dateTime} {service}
+            </Td>
+            <Td className="td p-2">
+              <div className="d-flex align-items-center justify-content-between">
+                {status}
+                {/* EDIT APPOINTMENT STATUS MODAL */}
+                <div className="edit-appointment-status-modal">
+                  <Button
+                    color="light"
+                    onClick={() => {
+                      toggleEditStatus();
+                      setAppointmentId(index);
+                    }}
+                    index={index}
+                  >
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Button>
-                </Link>
+                  <Modal centered isOpen={modalEditStatus} fade={false} toggle={toggleEditStatus}>
+                    <ModalHeader toggle={toggleEditStatus}>Editar estado de la cita</ModalHeader>
+                    <ModalBody>
+                      <form
+                        id="form"
+                        onSubmit={(e) => {
+                          handleSubmit(onSubmit)(e);
+                          handleSubmit(handleEditAppointmentStatus)(e);
+                        }}
+                      >
+                        <div className="row">
+                          <div className="col-md-6">
+                            <label htmlFor="status" className="form-label">
+                              Estado de la cita
+                            </label>
+                            <select
+                              name="status"
+                              id="status"
+                              // If error, then add invalid-input class
+                              className={`form-select ${errors.status && "invalid-input"}`}
+                              aria-label="select status option"
+                              {...register("status", {
+                                required: {
+                                  value: true,
+                                  message: "El campo es requerido",
+                                },
+                              })}
+                              value={appointmentStatus["status"]}
+                              onChange={(e) => {
+                                setAppointmentStatus({
+                                  ...appointmentStatus,
+                                  status: e.target.value,
+                                });
+                              }}
+                            >
+                              <option value="Pendiente">Pendiente</option>
+                              <option value="Realizada">Realizada</option>
+                            </select>
+                            {errors.status && (
+                              <span className="text-danger">{errors.status?.message}</span>
+                            )}
+                          </div>
+                          <div className="row mt-3">
+                            <div className="col-md-6">
+                              <button type="submit" className="btn btn-primary">
+                                Actualizar estado
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button color="secondary" onClick={toggleEditStatus}>
+                        Cancelar
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
               </div>
-              {/* <div className="edit-appointment-modal me-2">
-                <ModalEdit editWord="Reagendar" editWhat="cita" />
-              </div> */}
-              {/* Modal Delete Appointment */}
-              <div className="delete-appointment-modal">
+            </Td>
+            <Td className="td p-2">Realizado hardcoded</Td>
+            <Td className="td p-2">
+              <div className="invoice-modal">
                 <Button
                   color="light"
                   onClick={() => {
-                    toggleDelete();
+                    toggleInvoice();
                     setAppointmentId(index);
                   }}
                   index={index}
                 >
-                  <i className="fa-solid fa-trash-can"></i>
+                  <a className="link-primary">Factura</a>
                 </Button>
-                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                  <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
-                  <ModalBody>Estas seguro de qué quieres cancelar la cita?</ModalBody>
+                <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
+                  <ModalBody>
+                    <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
+                  </ModalBody>
                   <ModalFooter>
-                    <Button
-                      color="danger"
-                      onClick={(e) => {
-                        toggleDelete();
-                        handleDeleteAppointment(e);
-                      }}
-                    >
-                      Confirmar
-                    </Button>
-                    <Button color="secondary" onClick={toggleDelete}>
-                      Cancelar
+                    <Button color="secondary" onClick={toggleInvoice}>
+                      Salir
                     </Button>
                   </ModalFooter>
                 </Modal>
               </div>
-            </div>
-          </Td>
-        </Tr>
-      </Tbody>
+            </Td>
+            <Td className="td p-2">
+              <div className="d-flex justify-content-start justify-content-md-center align-items-center">
+                {/* Modal Edit Appointment  */}
+                <div className="edit-appointment-modal">
+                  <Link
+                    onClick={() => {
+                      toggleEdit();
+                    }}
+                    to={`/edit/appointment/${index}`}
+                  >
+                    <Button color="light">
+                      <i className="fa-solid fa-pen-to-square"></i>
+                    </Button>
+                  </Link>
+                </div>
+                {/* <div className="edit-appointment-modal me-2">
+                <ModalEdit editWord="Reagendar" editWhat="cita" />
+              </div> */}
+                {/* Modal Delete Appointment */}
+                <div className="delete-appointment-modal">
+                  <Button
+                    color="light"
+                    onClick={() => {
+                      toggleDelete();
+                      setAppointmentId(index);
+                    }}
+                    index={index}
+                  >
+                    <i className="fa-solid fa-trash-can"></i>
+                  </Button>
+                  <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                    <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
+                    <ModalBody>Estas seguro de qué quieres cancelar la cita?</ModalBody>
+                    <ModalFooter>
+                      <Button
+                        color="danger"
+                        onClick={(e) => {
+                          toggleDelete();
+                          handleDeleteAppointment(e);
+                        }}
+                      >
+                        Confirmar
+                      </Button>
+                      <Button color="secondary" onClick={toggleDelete}>
+                        Cancelar
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
+              </div>
+            </Td>
+          </Tr>
+        </Tbody>
+      </LazyLoadComponent>
     </>
   );
 };

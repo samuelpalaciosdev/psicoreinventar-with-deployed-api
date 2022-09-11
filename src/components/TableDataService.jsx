@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
-import { Tbody, Tr, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { useContext, useState } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { Tbody, Tr, Td } from "react-super-responsive-table";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 const TableDataService = ({ index, name, description, price, time }) => {
   const { store, actions } = useContext(Context);
@@ -52,69 +53,71 @@ const TableDataService = ({ index, name, description, price, time }) => {
   };
 
   return (
-    <Tbody className="table-group-divider" id={index} style={{ fontSize: "13px" }}>
-      <Tr>
-        <Td scope="row" className="td p-2">
-          #{index}
-        </Td>
-        <Td className="td p-2">{name}</Td>
-        <Td className="td  p-2">{description}</Td>
-        <Td className="td p-2">{price}</Td>
-        <Td className="td p-2">{time}</Td>
-        <Td className="td p-2">
-          <div className="botones">
-            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
-              {/* Modal Edit  */}
-              <div className="edit-service-modal">
-                <Link
-                  onClick={() => {
-                    toggleEdit();
-                  }}
-                  index={index}
-                  to={`/edit/service/${index}`}
-                >
-                  <Button color="light">
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </Button>
-                </Link>
-              </div>
+    <LazyLoadComponent>
+      <Tbody className="table-group-divider" id={index} style={{ fontSize: "13px" }}>
+        <Tr>
+          <Td scope="row" className="td p-2">
+            #{index}
+          </Td>
+          <Td className="td p-2">{name}</Td>
+          <Td className="td  p-2">{description}</Td>
+          <Td className="td p-2">{price}</Td>
+          <Td className="td p-2">{time}</Td>
+          <Td className="td p-2">
+            <div className="botones">
+              <div className="d-flex justify-content-start justify-content-md-center align-items-center">
+                {/* Modal Edit  */}
+                <div className="edit-service-modal">
+                  <Link
+                    onClick={() => {
+                      toggleEdit();
+                    }}
+                    index={index}
+                    to={`/edit/service/${index}`}
+                  >
+                    <Button color="light">
+                      <i className="fa-solid fa-pen-to-square"></i>
+                    </Button>
+                  </Link>
+                </div>
 
-              {/* Modal Delete */}
-              <div className="delete-service-modal">
-                <Button
-                  color="light"
-                  onClick={() => {
-                    toggleDelete();
-                    setServiceId(index);
-                  }}
-                  index={index}
-                >
-                  <i className="fa-solid fa-trash-can"></i>
-                </Button>
-                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                  <ModalHeader toggle={toggleDelete}>Eliminar servicio</ModalHeader>
-                  <ModalBody>Estas seguro de qué quieres Eliminar el servicio?</ModalBody>
-                  <ModalFooter>
-                    <Button
-                      color="danger"
-                      onClick={(e) => {
-                        toggleDelete();
-                        handleDeleteService(e);
-                      }}
-                    >
-                      Confirmar
-                    </Button>
-                    <Button color="secondary" onClick={toggleDelete}>
-                      Cancelar
-                    </Button>
-                  </ModalFooter>
-                </Modal>
+                {/* Modal Delete */}
+                <div className="delete-service-modal">
+                  <Button
+                    color="light"
+                    onClick={() => {
+                      toggleDelete();
+                      setServiceId(index);
+                    }}
+                    index={index}
+                  >
+                    <i className="fa-solid fa-trash-can"></i>
+                  </Button>
+                  <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                    <ModalHeader toggle={toggleDelete}>Eliminar servicio</ModalHeader>
+                    <ModalBody>Estas seguro de qué quieres Eliminar el servicio?</ModalBody>
+                    <ModalFooter>
+                      <Button
+                        color="danger"
+                        onClick={(e) => {
+                          toggleDelete();
+                          handleDeleteService(e);
+                        }}
+                      >
+                        Confirmar
+                      </Button>
+                      <Button color="secondary" onClick={toggleDelete}>
+                        Cancelar
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
               </div>
             </div>
-          </div>
-        </Td>
-      </Tr>
-    </Tbody>
+          </Td>
+        </Tr>
+      </Tbody>
+    </LazyLoadComponent>
   );
 };
 
