@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "../styles/Card.css";
 
 const ServiceCard = ({ index, image, name, time, price }) => {
@@ -13,12 +14,12 @@ const ServiceCard = ({ index, image, name, time, price }) => {
         style={{ width: "18rem" }}
         onClick={(e) => actions.handleClickService(index)}
       >
-        <img
+        <LazyLoadImage
           src={image}
           className="card-img-top mx-auto"
           alt="service-icon"
           style={{ height: "180px", width: "205px" }}
-        />
+        ></LazyLoadImage>
         <div className="card-body">
           <h5 className="card-title mb-4 fw-bold">{name}</h5>
           <div className="service-info d-flex justify-content-between">

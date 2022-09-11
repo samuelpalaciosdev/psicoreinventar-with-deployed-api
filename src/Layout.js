@@ -28,12 +28,7 @@ const Layout = () => {
     // console.log(pathname);
 
     // only display footer in these routes
-    if (
-      pathname === "/" ||
-      pathname === "*" ||
-      pathname === "/specialists" ||
-      pathname === "/contact"
-    ) {
+    if (pathname === "/" || pathname === "*" || pathname === "/specialists") {
       return <Footer />;
     } else {
       return null;

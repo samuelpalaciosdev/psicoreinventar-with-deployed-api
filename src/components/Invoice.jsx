@@ -1,7 +1,8 @@
-import "../styles/Invoice.css";
-import Logo from "../img/nav-logo.png";
 import { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Logo from "../img/nav-logo.png";
+import "../styles/Invoice.css";
 
 const Invoice = ({ pacient, doctor, invoice }) => {
   const { store, actions } = useContext(Context);
@@ -37,11 +38,11 @@ const Invoice = ({ pacient, doctor, invoice }) => {
           {/* Invoice Header */}
           <div className="row d-flex flex-row justify-content-between">
             <div className="col-md-6">
-              <img
+              <LazyLoadImage
                 src={Logo}
                 style={{ width: "100%", maxWidth: "200px" }}
                 alt="Psicoreinventar logo"
-              />
+              ></LazyLoadImage>
             </div>
             <div className="col-md-6 mt-3 mt-md-0">
               <p className="data-invoice mb-0">Invoice: # {invoice["appointment_id"]}</p>
@@ -124,115 +125,6 @@ const Invoice = ({ pacient, doctor, invoice }) => {
               </div>
             </div>
           </div>
-
-          {/* <table>
-        <thead>
-          <tr>
-            <th className="logo" style={{ paddingRight: "8rem" }}>
-              <img src={Logo} style={{ width: "100%", maxWidth: "200px" }} />
-            </th>
-            <th className="data-invoice">
-              Invoice: # {id} <br /> Date of purchase: {date_of_purchase}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Client Info */}
-          {/* <tr className="patient-info">
-            <td colSpan={4}>
-              <div className="data-client">
-                <p className="client-name text-primary">
-                  <strong>John Doe{patient_name}</strong>
-                </p>
-                <p className="client-data">{patient_email} johndoe@gmail.com</p>
-                <p className="client-data"> {patient_phone} +1-3547859</p>
-              </div>
-            </td>
-          </tr>
-          {/* Payment method */}
-          {/* <tr>
-            <th className="invoice-heading" colSpan={4}>
-              Payment Method
-            </th>
-          </tr>
-          <tr>
-            <td className="pt-2">MasterCard 8484{payment_method}</td>
-          </tr>
-          {/* Invoice Info */}
-          {/* <tr className="invoice-heading">
-            <th className="invoice-info-heading">Servicio</th>
-            <th className="invoice-info-heading">Especialista</th>
-            <th className="invoice-info-heading">Fecha de la cita</th>
-            <th className="invoice-info-heading">Precio</th>
-          </tr> */}
-          {/* </tbody> */}
-          {/* </table> */}
-          {/* <table>
-        <tbody>
-          <tr className="top">
-            <td colSpan={4}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td className="logo">
-                      <img
-                        src={Logo}
-                        style={{ width: "100%", maxWidth: "200px" }}
-                      />
-                    </td>
-                    <td className="data-invoice">
-                      Invoice: #{id}
-                      <br />
-                      Date of purchase: {date_of_purchase}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-          <tr className="information">
-            <td colSpan={4}>
-              <div className="data-client">
-                <p className="client-name">
-                  <strong>{patient_name}</strong>
-                </p>
-                <p className="client-data">
-                  {patient_email}
-                  <br />
-                  {patient_phone}
-                </p>
-              </div>
-            </td>
-          </tr>
-          <tr className="heading">
-            <td colSpan={3}>Payment Method</td>
-
-            <td></td>
-          </tr>
-          <tr className="details">
-            <td colSpan={3}>Payment method</td>
-
-            <td>{payment_method}</td>
-          </tr>
-          <tr className="heading">
-            <td>Service</td>
-            <td>Specialist</td>
-            <td>Appointment date</td>
-            <td>Price</td>
-          </tr>
-          <tr className="item">
-            <td>{service_id}</td>
-            <td>{specialist}</td>
-            <td>{date_appointment}</td>
-            <td>{price_service}</td>
-          </tr>
-        </tbody>
-        <tr className="total">
-          <td colSpan={3} />
-          <td>Total: ${total_amount}</td>
-        </tr>
-      </table> */}
         </div>
       </div>
     </>

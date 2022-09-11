@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import Header from "../components/Header";
@@ -10,9 +9,6 @@ import headerImg from "../img/customer-support.png";
 const Contact = (props) => {
   // Using context
   const { store, actions } = useContext(Context);
-  const navigate = useNavigate();
-
-  useEffect(() => {}, []);
 
   // React hook form
   const {
@@ -116,9 +112,7 @@ const Contact = (props) => {
                     })}
                     onChange={handleChange}
                   />
-                  {errors.name && (
-                    <span className="text-danger">{errors.name?.message}</span>
-                  )}
+                  {errors.name && <span className="text-danger">{errors.name?.message}</span>}
                 </div>
               </div>
               <div className="row">
@@ -131,9 +125,7 @@ const Contact = (props) => {
                     name="email"
                     id="inputEmail1"
                     // If error, then add invalid-input class
-                    className={`form-control ${
-                      errors.email && "invalid-input"
-                    }`}
+                    className={`form-control ${errors.email && "invalid-input"}`}
                     placeholder="johndoe@gmail.com"
                     {...register("email", {
                       required: {
@@ -149,17 +141,12 @@ const Contact = (props) => {
                     })}
                     onChange={handleChange}
                   />
-                  {errors.email && (
-                    <span className="text-danger">{errors.email?.message}</span>
-                  )}
+                  {errors.email && <span className="text-danger">{errors.email?.message}</span>}
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-6">
-                  <label
-                    htmlFor="inputFoundPsicoreinventar"
-                    className="form-label"
-                  >
+                  <label htmlFor="inputFoundPsicoreinventar" className="form-label">
                     ¿Cómo te enteraste de Psicoreinventar?
                   </label>
                   <input
@@ -167,9 +154,7 @@ const Contact = (props) => {
                     name="found_psicoreinventar"
                     id="inputFoundPsicoreinventar"
                     // If error, then add invalid-input class
-                    className={`form-control ${
-                      errors.found_psicoreinventar && "invalid-input"
-                    }`}
+                    className={`form-control ${errors.found_psicoreinventar && "invalid-input"}`}
                     placeholder="Un amigo"
                     {...register("found_psicoreinventar", {
                       required: {
@@ -180,9 +165,7 @@ const Contact = (props) => {
                     onChange={handleChange}
                   />
                   {errors.found_psicoreinventar && (
-                    <span className="text-danger">
-                      {errors.found_psicoreinventar?.message}
-                    </span>
+                    <span className="text-danger">{errors.found_psicoreinventar?.message}</span>
                   )}
                 </div>
               </div>
@@ -196,9 +179,7 @@ const Contact = (props) => {
                     name="psicoreinventar_help"
                     id="inputHowWeCanHelp"
                     // If error, then add invalid-input class
-                    className={`form-control ${
-                      errors.psicoreinventar_help && "invalid-input"
-                    }`}
+                    className={`form-control ${errors.psicoreinventar_help && "invalid-input"}`}
                     placeholder="Me gustaría saber..."
                     {...register("psicoreinventar_help", {
                       required: {
@@ -209,9 +190,7 @@ const Contact = (props) => {
                     onChange={handleChange}
                   />
                   {errors.psicoreinventar_help && (
-                    <span className="text-danger">
-                      {errors.psicoreinventar_help?.message}
-                    </span>
+                    <span className="text-danger">{errors.psicoreinventar_help?.message}</span>
                   )}
                 </div>
               </div>

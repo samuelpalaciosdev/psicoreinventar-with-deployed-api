@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import "../styles/Footer.css";
+import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import Logo from "../img/nav-logo.png";
 import Logo2 from "../img/logo-head.png";
+import "../styles/Footer.css";
 
 const Footer = () => {
   return (
@@ -11,11 +12,11 @@ const Footer = () => {
         <div className="row justify-content-center flex-column-reverse flex-lg-row">
           <div className="col-sm-12 col-lg-7">
             <div className="footer-logo pb-4">
-              <img src={Logo} alt="Psicoreinventar logo" />
+              <LazyLoadImage src={Logo} alt="Psicoreinventar logo"></LazyLoadImage>
             </div>
             <p className="py-2 px-2 footer-paragraph">
-              En caso de emergencia, por favor utilice alguno de estos recursos
-              en vez de este sitio.
+              En caso de emergencia, por favor utilice alguno de estos recursos en vez de este
+              sitio.
             </p>
             <div className="container px-2">
               <a
@@ -58,11 +59,11 @@ const Footer = () => {
           </div>
           <div className="col-sm-12 col-lg-4 col-xl-3">
             <div className="image-logo-head mt-0 mb-4">
-              <img
+              <LazyLoadImage
                 src={Logo2}
                 alt="Psicoreinventar logo"
                 style={{ width: "2rem" }}
-              />
+              ></LazyLoadImage>
             </div>
             <div className="d-flex justify-content-center justify-content-lg-start">
               <Link
@@ -73,20 +74,6 @@ const Footer = () => {
                 Agendar cita
               </Link>
             </div>
-
-            {/* <NavLink
-              to="/specialists"
-              className="nav-link fw-semibold me-2 mb-3"
-            >
-              Especialistas
-            </NavLink>
-
-            <NavLink className="nav-link fw-semibold me-2 mb-3" to="/register">
-              Regístrate
-            </NavLink>
-            <NavLink className="nav-link fw-semibold me-2 mb-3" to="/contact">
-              Contactar
-            </NavLink> */}
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import Header from "../components/Header";
+import headerImg from "../img/specialist-appointment.png";
 import SpecialistCard from "../components/SpecialistCard";
 import "../styles/Specialists.css";
-import headerImg from "../img/specialist-appointment.png";
 
 const Specialists = () => {
   const { store, actions } = useContext(Context);
@@ -22,9 +22,7 @@ const Specialists = () => {
         <div className="container specialists-available">
           <h4>Especialistas disponibles</h4>
           <p className="fw-semibold lead text-secondary">
-            Mostrando{" "}
-            <span className="text-primary">{store.doctors?.length || 0}</span>{" "}
-            resultados
+            Mostrando <span className="text-primary">{store.doctors?.length || 0}</span> resultados
           </p>
         </div>
       </main>

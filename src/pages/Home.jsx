@@ -1,12 +1,11 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import headerImg from "../img/82910-psychotherapy.jpg";
 import Card from "../components/Card";
 import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
-import headerImg from "../img/82910-psychotherapy.jpg";
 import ServiceCardShowCase from "../components/ServiceCardShowCase";
 import client1 from "../img/client1.jpg";
 import client2 from "../img/client2.jpg";

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "../styles/Card.css";
 
 const SpecialistCard = ({
@@ -14,12 +15,12 @@ const SpecialistCard = ({
   return (
     <div className="col-md-6 col-lg-4">
       <div className="card card-specialist h-100 p-3" id={index}>
-        <img
+        <LazyLoadImage
           src={image}
           className="card-img-top rounded-circle photo m-3"
           alt="Specialist Photo"
           style={{ height: "135px", width: "135px" }}
-        />
+        ></LazyLoadImage>
         <div className="card-body">
           <h5 className="card-title">
             {name} {""} {lastname}
@@ -30,18 +31,11 @@ const SpecialistCard = ({
           </ul>
           <div className="specialization-info mb-4">
             <div className="d-flex">
-              <div className="pill bg-primary text-light me-2">
-                {specialization1}
-              </div>
-              <div className="pill bg-primary text-light">
-                {specialization2}
-              </div>
+              <div className="pill bg-primary text-light me-2">{specialization1}</div>
+              <div className="pill bg-primary text-light">{specialization2}</div>
             </div>
           </div>
-          <Link
-            className="btn btn-primary specialist-appointment px-4 mt-3"
-            to="/appointment"
-          >
+          <Link className="btn btn-primary specialist-appointment px-4 mt-3" to="/appointment">
             Agendar
           </Link>
         </div>
