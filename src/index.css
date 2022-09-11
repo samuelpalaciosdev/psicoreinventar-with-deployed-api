@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Adding this because of fixed navbar */
+  padding-top: 5.125rem;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* .appointment-btn {
+  margin-bottom: 2rem;
+} */
+
+/* @media screen and (min-width: 48rem) {
+  .appointment-btn {
+    margin-bottom: 0;
+  }
+} */
+
+#citasRow {
+  margin-top: 100px;
+  background-color: cadetblue;
+}
+
+@media screen and (min-width: 48rem) {
+  .clients-header-text {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .clients-header-text {
+    text-align: left;
+  }
+}
+
+.paragraph {
+  color: rgb(57, 57, 70);
+}
+
+html.swal2-shown,
+body.swal2-shown {
+  overflow-y: auto !important;
+}

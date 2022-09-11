@@ -1,0 +1,38 @@
+.invoice-box {
+  max-width: 54.75rem;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #eee;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  line-height: 24px;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  color: #555;
+}
+
+.invoice-heading-bg {
+  background-color: #f0f0f0;
+}
+
+.invoice-heading {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.invoice-paragraph {
+  font-size: 0.875rem;
+}
+
+.client-name {
+  font-size: 1.5rem;
+}
+
+.data-invoice {
+  font-size: 0.9375rem;
+}
+
+.data-invoice {
+  text-align: left;
+}
+
+.client-data {
+  font-size: 0.875rem;
+}
