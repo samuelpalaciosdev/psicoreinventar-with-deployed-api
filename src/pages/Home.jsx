@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
-import headerImg from "../img/82910-psychotherapy.gif";
+import headerImg from "../img/82910-psychotherapy.jpg";
 import ServiceCardShowCase from "../components/ServiceCardShowCase";
 import client1 from "../img/client1.jpg";
 import client2 from "../img/client2.jpg";
