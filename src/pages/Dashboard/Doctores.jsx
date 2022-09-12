@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
+import { Helmet } from "react-helmet";
 import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
@@ -33,6 +34,10 @@ const Doctores = ({
   }, []);
   return (
     <div className="container-fluid">
+      <Helmet>
+        <title>Panel de doctor</title>
+        <meta name="description" content="Panel de doctor" />
+      </Helmet>
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           {/* <Sidebar /> */}

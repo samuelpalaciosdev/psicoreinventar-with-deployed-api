@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Sidebar from "../../components/Sidebar";
@@ -39,6 +40,9 @@ const Profile = (props) => {
 
   return (
     <div className="container-fluid">
+      <Helmet>
+        <title>Mi perfil</title>
+      </Helmet>
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           {store.currentUser?.user?.role_id === 1 && <Sidebar />}
@@ -56,8 +60,7 @@ const Profile = (props) => {
                   <h2>
                     Bienvenido(a),{" "}
                     <strong>
-                      {store.currentUser?.user?.name}{" "}
-                      {store.currentUser?.user?.lastname}
+                      {store.currentUser?.user?.name} {store.currentUser?.user?.lastname}
                     </strong>{" "}
                   </h2>
                 </div>
@@ -75,10 +78,7 @@ const Profile = (props) => {
                 }}
               >
                 <div className="row mb-3">
-                  <label
-                    htmlFor="inputName"
-                    className="col-sm-1 col-form-label"
-                  >
+                  <label htmlFor="inputName" className="col-sm-1 col-form-label">
                     Nombre
                   </label>
                   <div className="col-sm-10">
@@ -93,26 +93,17 @@ const Profile = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.name && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.name && "invalid-input"}`}
                       value={store.name}
                       onChange={actions.handleChange}
                       id="inputName"
                     />
 
-                    {errors.name && (
-                      <span className="text-danger">
-                        {errors.name?.message}
-                      </span>
-                    )}
+                    {errors.name && <span className="text-danger">{errors.name?.message}</span>}
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label
-                    htmlFor="inputLastName"
-                    className="col-sm-1 col-form-label"
-                  >
+                  <label htmlFor="inputLastName" className="col-sm-1 col-form-label">
                     Apellido
                   </label>
                   <div className="col-sm-10">
@@ -127,25 +118,18 @@ const Profile = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.lastname && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.lastname && "invalid-input"}`}
                       value={store.lastname}
                       onChange={actions.handleChange}
                       id="inputLastName"
                     />
                     {errors.lastname && (
-                      <span className="text-danger">
-                        {errors.lastname?.message}
-                      </span>
+                      <span className="text-danger">{errors.lastname?.message}</span>
                     )}
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label
-                    htmlFor="inputEmail"
-                    className="col-sm-1 col-form-label"
-                  >
+                  <label htmlFor="inputEmail" className="col-sm-1 col-form-label">
                     Email
                   </label>
                   <div className="col-sm-10">
@@ -162,26 +146,17 @@ const Profile = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.email && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.email && "invalid-input"}`}
                       autoComplete="username"
                       value={store.email}
                       onChange={actions.handleChange}
                       id="inputEmail"
                     />
-                    {errors.email && (
-                      <span className="text-danger">
-                        {errors.email?.message}
-                      </span>
-                    )}
+                    {errors.email && <span className="text-danger">{errors.email?.message}</span>}
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label
-                    htmlFor="inputPassword"
-                    className="col-sm-1 col-form-label"
-                  >
+                  <label htmlFor="inputPassword" className="col-sm-1 col-form-label">
                     Contraseña
                   </label>
                   <div className="col-sm-10">
@@ -192,16 +167,13 @@ const Profile = (props) => {
                         placeholder="Contraseña"
                         {...register("password", {
                           pattern: {
-                            value:
-                              /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+                            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
                             message:
                               "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 caracter especial",
                           },
                         })}
                         // If error, then add invalid-input class
-                        className={`form-control ${
-                          errors.password && "invalid-input"
-                        }`}
+                        className={`form-control ${errors.password && "invalid-input"}`}
                         autoComplete="new-password"
                         value={store.password}
                         onChange={actions.handleChange}
@@ -217,17 +189,12 @@ const Profile = (props) => {
                     </div>
 
                     {errors.password && (
-                      <span className="text-danger">
-                        {errors.password?.message}
-                      </span>
+                      <span className="text-danger">{errors.password?.message}</span>
                     )}
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label
-                    htmlFor="inputPhone"
-                    className="col-sm-1 col-form-label"
-                  >
+                  <label htmlFor="inputPhone" className="col-sm-1 col-form-label">
                     Teléfono
                   </label>
                   <div className="col-sm-10">
@@ -238,8 +205,7 @@ const Profile = (props) => {
                       {...register("phone", {
                         pattern: {
                           value: /^\d{8,12}$/,
-                          message:
-                            "El formato no es el correcto, 8 a 12 dígitos",
+                          message: "El formato no es el correcto, 8 a 12 dígitos",
                         },
                       })}
                       className="form-control"
@@ -247,19 +213,11 @@ const Profile = (props) => {
                       onChange={actions.handleChange}
                       id="inputPhone"
                     />
-                    {errors.phone && (
-                      <span className="text-danger">
-                        {errors.phone?.message}
-                      </span>
-                    )}
+                    {errors.phone && <span className="text-danger">{errors.phone?.message}</span>}
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn mt-2"
-                  style={{ backgroundColor: "#8dc2fe" }}
-                >
+                <button type="submit" className="btn mt-2" style={{ backgroundColor: "#8dc2fe" }}>
                   Actualizar perfil
                 </button>
               </form>

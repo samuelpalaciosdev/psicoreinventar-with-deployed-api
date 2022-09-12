@@ -36,7 +36,7 @@ const Header = ({
               style={{ maxWidth: "90%" }}
             />
           ) : (
-            <h2>Loading...</h2>
+            ""
           )}
         </div>
       </div>

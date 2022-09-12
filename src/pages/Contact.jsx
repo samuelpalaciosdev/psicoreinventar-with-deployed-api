@@ -1,7 +1,8 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { Helmet } from "react-helmet";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { useForm } from "react-hook-form";
 import Header from "../components/Header";
@@ -10,6 +11,16 @@ import headerImg from "../img/customer-support.png";
 const Contact = (props) => {
   // Using context
   const { store, actions } = useContext(Context);
+
+  const [imgIsReady, setImgIsReady] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImgIsReady(true);
+    };
+    img.src = headerImg;
+  }, []);
 
   // React hook form
   const {
@@ -69,12 +80,21 @@ const Contact = (props) => {
     <>
       <LazyLoadComponent>
         <main className="main-section w-100 h-100 p-3 mb-5">
+          <Helmet>
+            <title>Contáctanos</title>
+            <meta
+              name="description"
+              content="Cuéntanos más sobre ti y nos comunicaremos contigo a la brevedad, para responder cualquier duda o consulta que tengas."
+            />
+          </Helmet>
           <Header
             title="Contáctanos"
             description="Cuéntanos más sobre ti y nos comunicaremos contigo a la brevedad, para responder cualquier duda o consulta que tengas."
             btnLabel="Agendar cita"
             img={headerImg}
             imgLabel="customer-support"
+            imgIsReady={imgIsReady}
+            setImgIsReady={setImgIsReady}
           />
           <div className="contact-cta">
             <div className="container">

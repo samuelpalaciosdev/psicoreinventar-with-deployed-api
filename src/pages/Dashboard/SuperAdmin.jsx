@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
+import { Helmet } from "react-helmet";
 import Sidebar from "../../components/Sidebar";
 import SidebarClient from "../../components/SidebarClient";
 import SidebarDoctor from "../../components/SidebarDoctor";
@@ -18,6 +19,9 @@ const SuperAdmin = () => {
   }, [store.currentUser]);
   return (
     <div className="container-fluid">
+      <Helmet>
+        <title>Panel de Administrador</title>
+      </Helmet>
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           {store.currentUser?.user?.role_id === 1 && <Sidebar />}

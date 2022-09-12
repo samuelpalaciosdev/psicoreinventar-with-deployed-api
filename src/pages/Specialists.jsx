@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
+import { Helmet } from "react-helmet";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import Header from "../components/Header";
 import headerImg from "../img/specialist-appointment.png";
@@ -9,10 +10,27 @@ import "../styles/Specialists.css";
 const Specialists = () => {
   const { store, actions } = useContext(Context);
 
+  const [imgIsReady, setImgIsReady] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImgIsReady(true);
+    };
+    img.src = headerImg;
+  }, []);
+
   return (
     <>
       <LazyLoadComponent>
         <main className="main-section w-100 h-100 p-3 mb-5">
+          <Helmet>
+            <title>Especialistas</title>
+            <meta
+              name="description"
+              content="En Psicoreinventar, contamos con especialistas dedicados a ofrecerte sesiones de manera personalizada e integral. Inicia hoy tu proceso psicoterapéutico de la mejor manera, el bienestar comienza con la salud mental."
+            />
+          </Helmet>
           <Header
             title="Nuestros"
             title_highlight="especialistas"
@@ -20,6 +38,8 @@ const Specialists = () => {
             btnLabel="Agendar cita"
             img={headerImg}
             imgLabel="Doctor"
+            imgIsReady={imgIsReady}
+            setImgIsReady={setImgIsReady}
           />
           <div className="container specialists-available">
             <h4>Especialistas disponibles</h4>

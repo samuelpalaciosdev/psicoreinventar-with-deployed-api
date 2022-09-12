@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { Helmet } from "react-helmet";
 import injectContext from "./store/appContext";
 import Home from "./pages/Home";
 import Specialists from "./pages/Specialists";
@@ -34,10 +35,30 @@ const Layout = () => {
       return null;
     }
   };
+
+  //   <meta
+  //   name="description"
+  //   content="Psicoreinventar es una plataforma donde puedes agendar sesiones online con psicólogos, de manera personalizada e integral. Inicia hoy tu proceso psicoterapéutico de la mejor manera, el bienestar comienza con la salud mental."
+  // />
+  // <meta
+  //   name="keywords"
+  //   content="Psicóloga, Psicólogo, Psicólogos caracas, Psicólogos guatire, Psicóloga en caracas, Psicóloga en guatire,Terapia psicológica, Terapia individual, Terapia de pareja, Autismo, TDAH, Psicóloga Griselda Alvarez"
+  // />
   return (
     <BrowserRouter>
       <ScrollToTop />
       <NavbarNew />
+      <Helmet>
+        <title>Psicoreinventar</title>
+        <meta
+          name="description"
+          content="Psicoreinventar, es una plataforma donde puedes agendar sesiones online con psicólogos, de manera personalizada e integral. Inicia hoy tu proceso psicoterapéutico de la mejor manera, el bienestar comienza con la salud mental."
+        />
+        <meta
+          name="keywords"
+          content="Psicóloga, Psicólogo, Psicólogos caracas, Psicólogos guatire, Psicóloga en caracas, Psicóloga en guatire,Terapia psicológica, Terapia individual, Terapia de pareja, Autismo, TDAH, Psicóloga Griselda Alvarez"
+        />
+      </Helmet>
       <Routes>
         {/* PAGES */}
         <Route path="*" element={<NotFound />} />
