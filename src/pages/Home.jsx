@@ -1,10 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-// import headerImg from "../img/82910-psychotherapy.jpg";
-// import headerImg from "../img/82910-psychotherapy-v2.jpg";
-// import headerImg from "../img/82910-psychotherapy-v4.jpg";
 import headerImg from "../img/82910-psychotherapy-v3.jpg";
 import Card from "../components/Card";
 import LeftHeader from "../components/LeftHeader";
@@ -17,6 +14,13 @@ import client4 from "../img/client4.jpg";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
+
+  const [img, setImg] = useState("");
+
+  useEffect(() => {
+    setImg(headerImg);
+  }, []);
+
   return (
     <>
       {/* Main Header */}
@@ -26,8 +30,10 @@ const Home = () => {
           title_highlight="salud mental"
           description="Buscamos mejorar la calidad de vida de las personas, a través de la entrega de servicios integrales en salud mental, emocional y conductual personalizados."
           btnLabel="Agendar cita"
-          img={headerImg}
+          // img={headerImg}
           imgLabel="psychology-session-animation"
+          img={img}
+          setImg={setImg}
         />
       </main>
 
