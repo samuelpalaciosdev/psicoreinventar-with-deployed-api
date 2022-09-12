@@ -7,6 +7,8 @@ const Header = ({
   btnLabel,
   img,
   imgLabel,
+  imgIsReady,
+  setImgIsReady,
 }) => {
   return (
     <div className="container">
@@ -25,12 +27,17 @@ const Header = ({
           </Link>
         </div>
         <div className="col-md-6 text-center">
-          <img
-            src={img}
-            className="img-fluid mx-auto"
-            alt={imgLabel}
-            style={{ maxWidth: "90%" }}
-          />
+          {/* <img src={img} className="img-fluid mx-auto" alt={imgLabel} style={{ maxWidth: "90%" }} /> */}
+          {imgIsReady ? (
+            <img
+              src={img}
+              className="img-fluid mx-auto"
+              alt={imgLabel}
+              style={{ maxWidth: "90%" }}
+            />
+          ) : (
+            <h2>Loading...</h2>
+          )}
         </div>
       </div>
     </div>

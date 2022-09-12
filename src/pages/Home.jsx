@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -17,6 +17,16 @@ import client4 from "../img/client4.jpg";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
+
+  const [imgIsReady, setImgIsReady] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImgIsReady(true);
+    };
+    img.src = headerImg;
+  }, []);
   return (
     <>
       {/* Main Header */}
@@ -28,6 +38,8 @@ const Home = () => {
           btnLabel="Agendar cita"
           img={headerImg}
           imgLabel="psychology-session-animation"
+          imgIsReady={imgIsReady}
+          setImgIsReady={setImgIsReady}
         />
       </main>
 
