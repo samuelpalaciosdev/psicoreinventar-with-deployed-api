@@ -33,10 +33,10 @@ const Header = ({
               src={img}
               className="img-fluid mx-auto"
               alt={imgLabel}
-              style={{ width: "100%", height: "100%", maxWidth: "90%" }}
+              style={{ maxWidth: "90%" }}
             />
           ) : (
-            <h2>Cargando...</h2>
+            <h2>Loading...</h2>
           )}
         </div>
       </div>

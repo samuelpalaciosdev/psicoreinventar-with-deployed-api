@@ -20,16 +20,13 @@ const Home = () => {
 
   const [imgIsReady, setImgIsReady] = useState(false);
 
-  // Preload headerImg when componentDidMount
   useEffect(() => {
     const img = new Image();
     img.onload = () => {
-      // when it finishes loading, update the state
       setImgIsReady(true);
     };
     img.src = headerImg;
   }, []);
-
   return (
     <>
       {/* Main Header */}
