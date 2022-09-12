@@ -53,6 +53,8 @@ const NavbarNew = () => {
                 src={Logo}
                 alt="project-logo"
                 className="d-inline-block align-top navbar-brand me-5"
+                width={195}
+                height={50}
               />
             </Nav.Link>
 
@@ -166,8 +168,7 @@ const NavbarNew = () => {
                 )}
               </Nav>
               {/* Admin and doctors shouldn't view agendar cita button on navbar */}
-              {store.currentUser?.user?.role_id !== 1 &&
-              store.currentUser?.user?.role_id !== 2 ? (
+              {store.currentUser?.user?.role_id !== 1 && store.currentUser?.user?.role_id !== 2 ? (
                 <div className="d-flex">
                   <Nav.Link
                     as={Link}
