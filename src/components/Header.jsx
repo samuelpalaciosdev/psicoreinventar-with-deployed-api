@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ title, title_highlight, description, btnLabel, img, imgLabel, setImg }) => {
+const Header = ({
+  title,
+  title_highlight,
+  description,
+  btnLabel,
+  img,
+  imgLabel,
+}) => {
   return (
     <div className="container">
       <div className="row justify-content-center align-items-center">
@@ -18,8 +25,12 @@ const Header = ({ title, title_highlight, description, btnLabel, img, imgLabel, 
           </Link>
         </div>
         <div className="col-md-6 text-center">
-          <img src={img} alt={imgLabel} className="img-fluid mx-auto" style={{ maxWidth: "90%" }} />
-          {/* <img src={img} className="img-fluid mx-auto" alt={imgLabel} style={{ maxWidth: "90%" }} /> */}
+          <img
+            src={img}
+            className="img-fluid mx-auto"
+            alt={imgLabel}
+            style={{ maxWidth: "90%" }}
+          />
         </div>
       </div>
     </div>
