@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { Tbody, Tr, Td } from "react-super-responsive-table";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
@@ -64,77 +63,75 @@ const TableDataSpecialist = ({
   };
 
   return (
-    <LazyLoadComponent>
-      <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-        <Tr>
-          <Td scope="row" className="td p-2">
-            #{index}
-          </Td>
-          <Td className="td p-2">
-            {name} {""}
-            {lastname}
-          </Td>
-          <Td className="td p-2">{email}</Td>
-          <Td className="td p-2">{education}</Td>
-          <Td className="td p-2">{experience}</Td>
-          <Td className="td p-2">
-            {specialization1}
-            {", "}
-            {specialization2}
-          </Td>
-          <Td className="td p-2">
-            <div className="botones">
-              <div className="d-flex justify-content-start justify-content-md-center align-items-center">
-                {/* Modal Edit  */}
-                <div className="edit-specialist-modal">
-                  <Link
-                    onClick={() => {
-                      toggleEdit();
-                    }}
-                    index={index}
-                    to={`/edit/specialist/${index}`}
-                  >
-                    <Button color="light">
-                      <i className="fa-solid fa-pen-to-square"></i>
-                    </Button>
-                  </Link>
-                </div>
-                <div className="delete-user-modal">
-                  <Button
-                    color="light"
-                    onClick={() => {
-                      toggleDelete();
-                      setSpecialistId(index);
-                    }}
-                    index={index}
-                  >
-                    <i className="fa-solid fa-trash-can"></i>
+    <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+      <Tr>
+        <Td scope="row" className="td p-2">
+          #{index}
+        </Td>
+        <Td className="td p-2">
+          {name} {""}
+          {lastname}
+        </Td>
+        <Td className="td p-2">{email}</Td>
+        <Td className="td p-2">{education}</Td>
+        <Td className="td p-2">{experience}</Td>
+        <Td className="td p-2">
+          {specialization1}
+          {", "}
+          {specialization2}
+        </Td>
+        <Td className="td p-2">
+          <div className="botones">
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
+              {/* Modal Edit  */}
+              <div className="edit-specialist-modal">
+                <Link
+                  onClick={() => {
+                    toggleEdit();
+                  }}
+                  index={index}
+                  to={`/edit/specialist/${index}`}
+                >
+                  <Button color="light">
+                    <i className="fa-solid fa-pen-to-square"></i>
                   </Button>
-                  <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                    <ModalHeader toggle={toggleDelete}>Eliminar especialista</ModalHeader>
-                    <ModalBody>Estas seguro de qué quieres Eliminar al especialista?</ModalBody>
-                    <ModalFooter>
-                      <Button
-                        color="danger"
-                        onClick={(e) => {
-                          toggleDelete();
-                          handleDeleteSpecialist(e);
-                        }}
-                      >
-                        Confirmar
-                      </Button>
-                      <Button color="secondary" onClick={toggleDelete}>
-                        Cancelar
-                      </Button>
-                    </ModalFooter>
-                  </Modal>
-                </div>
+                </Link>
+              </div>
+              <div className="delete-user-modal">
+                <Button
+                  color="light"
+                  onClick={() => {
+                    toggleDelete();
+                    setSpecialistId(index);
+                  }}
+                  index={index}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </Button>
+                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                  <ModalHeader toggle={toggleDelete}>Eliminar especialista</ModalHeader>
+                  <ModalBody>Estas seguro de qué quieres Eliminar al especialista?</ModalBody>
+                  <ModalFooter>
+                    <Button
+                      color="danger"
+                      onClick={(e) => {
+                        toggleDelete();
+                        handleDeleteSpecialist(e);
+                      }}
+                    >
+                      Confirmar
+                    </Button>
+                    <Button color="secondary" onClick={toggleDelete}>
+                      Cancelar
+                    </Button>
+                  </ModalFooter>
+                </Modal>
               </div>
             </div>
-          </Td>
-        </Tr>
-      </Tbody>
-    </LazyLoadComponent>
+          </div>
+        </Td>
+      </Tr>
+    </Tbody>
   );
 };
 
