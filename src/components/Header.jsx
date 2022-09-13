@@ -31,7 +31,7 @@ const Header = ({
           {imgIsReady ? (
             <img
               src={img}
-              className="img-fluid mx-auto d-none d-md-block"
+              className="img-fluid mx-auto"
               alt={imgLabel}
               style={{ maxWidth: "90%" }}
             />
