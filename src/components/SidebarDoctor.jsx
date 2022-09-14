@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { FaUser, FaUserMd } from "react-icons/fa";
 
 const SidebarDoctor = () => {
   const { store, actions } = useContext(Context);
@@ -30,21 +31,21 @@ const SidebarDoctor = () => {
         >
           <li className="nav-item">
             <Link to="/profile" className="nav-link align-middle px-0">
-              <i className="fa-solid fa-user" style={{ color: "#8dc2fe" }} />{" "}
-              <span className="ms-1 d-none d-sm-inline text-white">Mi perfil</span>
+              <FaUser size="1rem" style={{ color: "#8dc2fe" }} />
+              <span className="ms-2 d-none d-sm-inline text-white">Mi perfil</span>
             </Link>
           </li>
           <li className="w-100">
             <Link to="/doctores" className="nav-link px-0">
-              <i className="fa-solid fa-user-doctor" style={{ color: "#8dc2fe" }}></i>{" "}
-              <span className="d-none d-sm-inline text-white">Doctor</span>{" "}
+              <FaUserMd size="1rem" style={{ color: "#8dc2fe" }} />
+              <span className="ms-2 d-none d-sm-inline text-white">Doctor</span>{" "}
             </Link>
           </li>
         </ul>
         <hr />
         <div className="dropdown pb-4">
           <a
-            href="#"
+            href="/#"
             className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
             id="dropdownUser1"
             data-bs-toggle="dropdown"
