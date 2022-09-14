@@ -25,6 +25,10 @@ const Home = () => {
     };
     img.src = headerImg;
   }, []);
+
+  useEffect(() => {
+    actions.getServices();
+  }, []);
   return (
     <>
       {/* Main Header */}
