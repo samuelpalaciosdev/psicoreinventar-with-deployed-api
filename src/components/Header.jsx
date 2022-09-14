@@ -27,8 +27,8 @@ const Header = ({
           </Link>
         </div>
         <div className="col-md-6 text-center">
-          <img src={img} className="img-fluid mx-auto" alt={imgLabel} style={{ maxWidth: "90%" }} />
-          {/* {imgIsReady ? (
+          {/* <img src={img} className="img-fluid mx-auto" alt={imgLabel} style={{ maxWidth: "90%" }} /> */}
+          {imgIsReady ? (
             <img
               src={img}
               className="img-fluid mx-auto"
@@ -37,7 +37,7 @@ const Header = ({
             />
           ) : (
             ""
-          )} */}
+          )}
         </div>
       </div>
     </div>

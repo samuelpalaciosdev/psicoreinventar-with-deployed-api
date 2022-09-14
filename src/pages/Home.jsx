@@ -18,13 +18,13 @@ const Home = () => {
 
   const [imgIsReady, setImgIsReady] = useState(false);
 
-  // useEffect(() => {
-  //   const img = new Image();
-  //   img.onload = () => {
-  //     setImgIsReady(true);
-  //   };
-  //   img.src = headerImg;
-  // }, []);
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImgIsReady(true);
+    };
+    img.src = headerImg;
+  }, []);
   return (
     <>
       {/* Main Header */}
