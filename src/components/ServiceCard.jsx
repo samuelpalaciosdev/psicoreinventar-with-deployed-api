@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { FaRegClock, FaRegCreditCard } from "react-icons/fa";
 import "../styles/Card.css";
 
 const ServiceCard = ({ index, image, name, time, price }) => {
@@ -24,11 +25,11 @@ const ServiceCard = ({ index, image, name, time, price }) => {
           <h5 className="card-title mb-4 fw-bold">{name}</h5>
           <div className="service-info d-flex justify-content-between">
             <div className="service-time d-flex align-items-center me-5">
-              <i className="fa-regular fa-clock fa-xl me-2" />
+              <FaRegClock size="1.4rem" className="me-2" />
               <span className="fw-semibold">{time}</span>
             </div>
             <div className="service-price d-flex align-items-center">
-              <i className="fa-regular fa-credit-card fa-xl me-2"></i>
+              <FaRegCreditCard size="1.4rem" className="me-2" />
               <span className="fw-semibold">{price}</span>
             </div>
           </div>
