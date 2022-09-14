@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { FaTrashAlt } from "react-icons/fa";
 import { Tbody, Tr, Td } from "react-super-responsive-table";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Invoice from "./Invoice";
@@ -91,7 +92,7 @@ const TableDataAppointment = ({
               }}
               index={index}
             >
-              <a className="link-primary">Factura</a>
+              <span className="link-primary">Factura</span>
             </Button>
             <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
               <ModalBody>
@@ -125,7 +126,7 @@ const TableDataAppointment = ({
                   }}
                   index={index}
                 >
-                  <i className="fa-solid fa-trash-can"></i>
+                  <FaTrashAlt size="1rem" />
                 </Button>
                 <Modal centered isOpen={modal} fade={false} toggle={toggle}>
                   <ModalHeader toggle={toggle}>Cancelar cita</ModalHeader>

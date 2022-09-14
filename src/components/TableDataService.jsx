@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { BsPencilSquare } from "react-icons/bs";
+import { FaTrashAlt } from "react-icons/fa";
 import { Tbody, Tr, Td } from "react-super-responsive-table";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
@@ -74,7 +76,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
                   to={`/edit/service/${index}`}
                 >
                   <Button color="light">
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <BsPencilSquare size="1rem" />
                   </Button>
                 </Link>
               </div>
@@ -89,7 +91,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
                   }}
                   index={index}
                 >
-                  <i className="fa-solid fa-trash-can"></i>
+                  <FaTrashAlt size="1rem" />
                 </Button>
                 <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Eliminar servicio</ModalHeader>

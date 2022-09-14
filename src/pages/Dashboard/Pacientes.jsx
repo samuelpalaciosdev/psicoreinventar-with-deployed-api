@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import { Helmet } from "react-helmet";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
@@ -6,7 +7,6 @@ import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
-import { useNavigate } from "react-router-dom";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
 import TablePacientAppointments from "../../components/TablePacientAppointments";
 

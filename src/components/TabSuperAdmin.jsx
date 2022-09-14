@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+import { FaCalendarCheck, FaHospitalUser, FaUserMd, FaBookmark, FaTrashAlt } from "react-icons/fa";
+import { BsPencilSquare } from "react-icons/bs";
 import TableDataClient from "../components/TableDataClient";
 import TableDataService from "./TableDataService";
 import TableDataSpecialist from "./TableDataSpecialist";
@@ -41,7 +43,7 @@ function TabSuperAdmin() {
               className={activeTab == "1" ? "activeTab baseTab" : "baseTab"}
               onClick={() => cambiarTab("1")}
             >
-              <i className="fa-solid fa-calendar-check p-1" style={{ color: "#8DC2FE" }}></i>
+              <FaCalendarCheck size="1.5rem" style={{ color: "#8dc2fe" }} className="p-1" />
               Citas
             </NavLink>
           </NavItem>
@@ -50,7 +52,7 @@ function TabSuperAdmin() {
               className={activeTab == "2" ? "activeTab baseTab" : "baseTab"}
               onClick={() => cambiarTab("2")}
             >
-              <i className="fa-solid fa-hospital-user p-1" style={{ color: "#8DC2FE" }}></i>
+              <FaHospitalUser size="1.75rem" style={{ color: "#8dc2fe" }} className="p-1" />
               Pacientes
             </NavLink>
           </NavItem>
@@ -59,7 +61,7 @@ function TabSuperAdmin() {
               className={activeTab == "3" ? "activeTab baseTab" : "baseTab"}
               onClick={() => cambiarTab("3")}
             >
-              <i className="fa-solid fa-user-doctor p-1" style={{ color: "#8DC2FE" }}></i>
+              <FaUserMd size="1.5rem" style={{ color: "#8dc2fe" }} className="p-1" />
               Especialistas
             </NavLink>
           </NavItem>
@@ -68,7 +70,7 @@ function TabSuperAdmin() {
               className={activeTab == "4" ? "activeTab baseTab" : "baseTab"}
               onClick={() => cambiarTab("4")}
             >
-              <i className="fa-solid fa-bookmark p-1" style={{ color: "#8DC2FE" }} />
+              <FaBookmark size="1.5rem" style={{ color: "#8dc2fe" }} className="p-1" />
               Servicios
             </NavLink>
           </NavItem>
@@ -103,7 +105,9 @@ function TabSuperAdmin() {
                     </Th>
                     <Th scope="col" className="th p-2">
                       <div className="d-flex justify-content-center align-items-center">
-                        <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                        <div className="btn-dashboard">
+                          <FaTrashAlt size="1rem" />
+                        </div>
                       </div>
                     </Th>
                   </Tr>
@@ -140,12 +144,13 @@ function TabSuperAdmin() {
                       Historial de citas
                     </Th>
                     <Th scope="col" className="th p-2">
-                      Pago
-                    </Th>
-                    <Th scope="col" className="th p-2">
                       <div className="d-flex justify-content-center align-items-center">
-                        <i className="fa-solid fa-pen-to-square btn-dashboard"></i>
-                        <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                        <div className="btn-dashboard">
+                          <BsPencilSquare size="1rem" />
+                        </div>
+                        <div className="btn-dashboard">
+                          <FaTrashAlt size="1rem" />
+                        </div>
                       </div>
                     </Th>
                   </Tr>
@@ -199,8 +204,12 @@ function TabSuperAdmin() {
                     </Th>
                     <Th scope="col" className="th p-2" id="botoness">
                       <div className="d-flex justify-content-center align-items-center">
-                        <i className="fa-solid fa-pen-to-square btn-dashboard"></i>
-                        <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                        <div className="btn-dashboard">
+                          <BsPencilSquare size="1rem" />
+                        </div>
+                        <div className="btn-dashboard">
+                          <FaTrashAlt size="1rem" />
+                        </div>
                       </div>
                     </Th>
                   </Tr>
@@ -250,8 +259,12 @@ function TabSuperAdmin() {
 
                     <Th scope="col" className="th p-2">
                       <div className="d-flex justify-content-center align-items-center">
-                        <i className="fa-solid fa-pen-to-square btn-dashboard"></i>
-                        <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                        <div className="btn-dashboard">
+                          <BsPencilSquare size="1rem" />
+                        </div>
+                        <div className="btn-dashboard">
+                          <FaTrashAlt size="1rem" />
+                        </div>
                       </div>
                     </Th>
                   </Tr>

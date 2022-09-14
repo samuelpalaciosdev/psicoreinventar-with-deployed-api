@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import { Helmet } from "react-helmet";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { BsPencilSquare } from "react-icons/bs";
+import { FaTrashAlt } from "react-icons/fa";
 import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
-import { useNavigate } from "react-router-dom";
 import TableDoctorAppointments from "../../components/tableDoctorAppointments";
 import ModalAddAppointmentDoctor from "../../components/Modal/ModalAddAppointmentDoctor";
 
@@ -110,8 +112,12 @@ const Doctores = ({
                           </Th>
                           <Th scope="col" className="th" style={{ width: "10%" }}>
                             <div className="d-flex justify-content-center align-items-center">
-                              <i className="fa-solid fa-pen-to-square btn-dashboard"></i>{" "}
-                              <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                              <div className="btn-dashboard">
+                                <BsPencilSquare size="1rem" />
+                              </div>
+                              <div className="btn-dashboard">
+                                <FaTrashAlt size="1rem" />
+                              </div>
                             </div>
                           </Th>
                         </Tr>

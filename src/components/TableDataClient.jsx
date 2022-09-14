@@ -3,7 +3,8 @@ import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { BsPencilSquare } from "react-icons/bs";
+import { FaTrashAlt } from "react-icons/fa";
 import { Tbody, Tr, Td } from "react-super-responsive-table";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
@@ -107,7 +108,6 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
             </span>
           ))}
         </Td>
-        <Td className="td p-2">Realizado</Td>
         <Td className="td p-2">
           <div className="botones">
             <div className="d-flex justify-content-start justify-content-md-center align-items-center">
@@ -121,7 +121,7 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
                   to={`/edit/client/${index}`}
                 >
                   <Button color="light">
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <BsPencilSquare size="1rem" />
                   </Button>
                 </Link>
               </div>
@@ -135,7 +135,7 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
                   }}
                   index={index}
                 >
-                  <i className="fa-solid fa-trash-can"></i>
+                  <FaTrashAlt size="1rem" />
                 </Button>
                 <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Eliminar paciente</ModalHeader>

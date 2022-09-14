@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { BsPencilSquare } from "react-icons/bs";
+import { FaTrashAlt } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
@@ -174,7 +176,7 @@ const TableDoctorAppointments = ({
                   }}
                   index={index}
                 >
-                  <i className="fa-solid fa-pen-to-square"></i>
+                  <BsPencilSquare size="1rem" />
                 </Button>
                 <Modal centered isOpen={modalEditStatus} fade={false} toggle={toggleEditStatus}>
                   <ModalHeader toggle={toggleEditStatus}>Editar estado de la cita</ModalHeader>
@@ -248,7 +250,7 @@ const TableDoctorAppointments = ({
                 }}
                 index={index}
               >
-                <a className="link-primary">Factura</a>
+                <span className="link-primary">Factura</span>
               </Button>
               <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
                 <ModalBody>
@@ -273,7 +275,7 @@ const TableDoctorAppointments = ({
                   to={`/edit/appointment/${index}`}
                 >
                   <Button color="light">
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <BsPencilSquare size="1rem" />
                   </Button>
                 </Link>
               </div>
@@ -290,7 +292,7 @@ const TableDoctorAppointments = ({
                   }}
                   index={index}
                 >
-                  <i className="fa-solid fa-trash-can"></i>
+                  <FaTrashAlt size="1rem" />
                 </Button>
                 <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
