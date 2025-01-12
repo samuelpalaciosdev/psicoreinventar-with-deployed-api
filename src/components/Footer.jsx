@@ -49,7 +49,7 @@ const Footer = () => {
                   <i className="fa-brands fa-linkedin-in fa-lg"></i>
                 </a>
                 <a
-                  href="https://github.com/samuelpalaciosdev/final-project"
+                  href="https://github.com/samuelpalacioss/final-project"
                   target="_blank"
                   rel="noreferrer"
                   className=" me-1 text-reset social-media-icon fa-lg"
